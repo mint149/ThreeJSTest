@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
+		<script src="js/three.min.js"></script>
+		<script src="js/stats.min.js"></script>
+		<script src="js/OrbitControls.js"></script>
+		<script src="js/data.js"></script>
+		<script src="js/main.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/smoothness/jquery-ui-1.10.4.custom.min.css" />
+	</head>
+	<body onload="init();">
+		<script type="text/javascript">
+		$(function(){
+			$("#dialog").dialog({
+				autoOpen: false,
+				draggable: false,
+				modal: true,
+				width: 450,
+				height: 450
+			});
+		});
+		</script>
+		<div id ="contents">
+			<div id="dialog" title="">
+				<img id="dialogImage" src="" width="400px" height="400px">
+			</div>
+			<div id="menu">
+				<div id="header">
+					<!-- statsが入る -->
+				</div>
+				<div id="shutter">
+					<dl>
+						<dt>
+							撮影予約
+						</dt>
+						<dd>
+							<p id="shutter_p"></p>
+							<input type="date" name="dateTo" value="2014-01-01">
+							<input type="time" name="timeTo" step="1" value="12:00:00">
+							<input type="button" value="予約">
+						</dd>
+					</dl>
+				</div>
+				<div id="log">
+					<dl>
+						<dt>
+							ログ閲覧
+						</dt>
+						<dd>
+							2013/12/13 21:34:56 (150,103,42)
+						</dd>
+					</dl>
+				</div>
+				<div id="image">
+					<dl>
+						<dt>
+							画像閲覧
+						</dt>
+						<dd>
+							<p onclick="showDialog(this);">2013/12/13 21:45:00</p>
+							<p onclick="showDialog(this);">2013/12/13 21:45:30</p>
+<!-- 							<a href="" onclick="showDialog(this);">
+								<p>2013/12/13 21:45:00</p>
+							</a>
+							<a href="" onclick="showDialog(this);">
+								<p>2013/12/13 21:45:00</p>
+							</a>
+							<a href="" onclick="showDialog(this);">
+								<p>2013/12/13 21:45:00</p>
+							</a>
+ -->						</dd>
+					</dl>
+				</div>
+				<div id="trace">
+					<dl>
+						<dt>
+							軌跡表示
+						</dt>
+						<dd>
+							<p>
+								From:<input type="date" id="dateFrom" value="2014-01-01">
+								<input type="time" id="timeFrom" step="1" value="12:00:00">
+							</p>
+							<p>
+								To:<input type="date" id="dateTo" value="2014-01-01">
+								<input type="time" id="timeTo" step="1" value="12:00:00">
+							</p>
+							<p>
+								<input id="playButton" type="button" value="再生" onclick="tracePlay();">
+								<input id="resetButton" type="button" value="リセット" onclick="traceReset();">
+							</p>
+							<p id="point">
+								現在の座標:2014/1/1 12:00:00 (0,0,0)
+							</p>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div id="monitor">
+				<!-- canvasが入る -->
+			</div>
+		</div>
+	</body>
+</html>
